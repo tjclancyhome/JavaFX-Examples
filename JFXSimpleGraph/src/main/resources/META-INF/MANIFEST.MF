@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven 3.6.1
+Built-By: tjclancy
+Build-Jdk: 12.0.2
+Main-Class: org.tjc.jfx.simplegraph.JFXSimpleGraph

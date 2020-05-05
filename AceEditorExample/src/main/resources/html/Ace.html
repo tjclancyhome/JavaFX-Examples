@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Ace Editor Example</title>
+        <style type="text/css" media="screen">
+            #editor {
+                margin: 0;
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <!--<h2>Edit code</h2>-->
+        <div id="editor"></div>
+        <script src="../js/ace/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../js/ace/src-noconflict/ext-beautify.js" type="text/javascript" charset="utf-8"></script>
+
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.7/ace.js" type="text/javascript" charset="utf-8"></script>-->
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.7/ext-beautify.js" type="text/javascript" charset="utf-8"></script>-->
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.7/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>-->
+        <script src="../js/ace/src-noconflict/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
+        <script>
+            //
+            // set options according to ace config wiki page: https://github.com/ajaxorg/ace/wiki/Configuring-Ace
+            //
+            ace.require("ace/ext/language_tools");
+
+            var editor = ace.edit("editor");
+
+            editor.getSession().setMode("ace/mode/java");
+            editor.setTheme("ace/theme/eclipse");
+            
+            /*
+             * Default options.
+             */
+            editor.setOptions({
+                hScrollBarAlwaysVisible: false,
+                vScrollBarAlwaysVisible: false,
+                animatedScroll: true,
+                autoScrollEditorIntoView: true,
+                behavioursEnabled: true,
+                cursorStyle: "smooth",
+                dragDelay: 1000,
+                dragEnabled: true,
+                enableBasicAutocompletion: true,
+                enableLiveAutocompletion: false,
+                enableSnippets: true,
+                fadeFoldWidgets: false,
+                foldStyle: "markbegin",
+                fontFamily: "monospaced",
+                fontSize: 13,
+                highlightActiveLine: true,
+                highlightGutterLine: true,
+                highlightSelectedWord: true,
+                navigateWithinSoftTabs: true,
+                newLineMode: "auto",
+                overwrite: false,
+                printMarginColumn: 110,
+                scrollPastEnd: true,
+                scrollSpeed: 0.05,
+                showFoldWidgets: true,
+                showGutter: true,
+                showInvisibles: false,
+                showLineNumbers: true,
+                showPrintMargins: false,
+                tabSize: 4,
+                useSoftTabs: true,
+                wrap: false,
+                wrapBehavioursEnabled: true
+            });
+        </script>
+    </body>
+</html>

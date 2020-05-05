@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+    <action>
+        <actionName>CUSTOM-JavaFX Run</actionName>
+        <displayName>JavaFX Run</displayName>
+        <goals>
+            <goal>-e</goal>
+            <goal>clean</goal>
+            <goal>package</goal>
+            <goal>javafx:run</goal>
+        </goals>
+    </action>
+    <action>
+        <actionName>CUSTOM-JavaFX Clean Package Run with Full Debugging</actionName>
+        <displayName>JavaFX Clean Package Run with Full Debugging</displayName>
+        <goals>
+            <goal>-e</goal>
+            <goal>-X</goal>
+            <goal>clean</goal>
+            <goal>package</goal>
+            <goal>javafx:run</goal>
+        </goals>
+    </action>
+    <action>
+        <actionName>run</actionName>
+        <packagings>
+            <packaging>jar</packaging>
+        </packagings>
+        <goals>
+            <goal>-e</goal>
+            <goal>clean</goal>
+            <goal>javafx:run</goal>
+        </goals>
+    </action>
+    <action>
+        <actionName>debug</actionName>
+        <packagings>
+            <packaging>jar</packaging>
+        </packagings>
+        <goals>
+            <goal>process-classes</goal>
+            <goal>org.codehaus.mojo:exec-maven-plugin:1.5.0:exec</goal>
+        </goals>
+        <properties>
+            <exec.args>-agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address} -classpath %classpath ${packageClassName}</exec.args>
+            <exec.executable>java</exec.executable>
+            <jpda.listen>true</jpda.listen>
+            <jshell.run.enable>true</jshell.run.enable>
+        </properties>
+    </action>
+</actions>

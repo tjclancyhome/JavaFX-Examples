@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<fx:root hgap="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="414.0" type="GridPane" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+    <columnConstraints>
+        <ColumnConstraints fillWidth="false" halignment="RIGHT" hgrow="SOMETIMES" maxWidth="286.0" minWidth="10.0" prefWidth="40.0" />
+        <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="538.0" minWidth="10.0" prefWidth="349.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+        <Label fx:id="searchBarLabel" contentDisplay="CENTER" prefHeight="17.0" prefWidth="48.0" text="Search" textAlignment="RIGHT" GridPane.vgrow="NEVER" />
+        <TextField fx:id="searchTextField" prefHeight="27.0" prefWidth="357.0" promptText="Enter search" GridPane.columnIndex="1" GridPane.vgrow="NEVER" />
+    </children>
+</fx:root>

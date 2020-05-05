@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.TextFlow?>
+
+
+<fx:root prefHeight="480.0" prefWidth="640.0" textAlignment="CENTER" type="TextFlow" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" />

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<fx:root focusTraversable="false" prefHeight="400.0" prefWidth="469.0" type="ScrollPane" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+    <content>
+        <AnchorPane prefHeight="375.0" prefWidth="450.0">
+            <children>
+                <ListView fx:id="nameListView" focusTraversable="false" layoutX="10.0" layoutY="10.0" prefHeight="315.0" prefWidth="200.0" />
+                <TextField fx:id="enterNameTextField" layoutX="220.0" layoutY="10.0" prefHeight="27.0" prefWidth="193.0" promptText="Enter a name..." />
+                <Button fx:id="addNameButton" layoutX="220.0" layoutY="45.0" mnemonicParsing="false" text="Add Name" />
+            </children>
+        </AnchorPane>
+    </content>
+</fx:root>

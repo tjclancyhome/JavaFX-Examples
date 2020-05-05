@@ -1,0 +1,9 @@
+
+.row-header-cell {
+    -fx-background-color: -fx-box-border, -fx-inner-border, -fx-body-color;
+    -fx-background-insets: 0, 0 1 1 0, 1 2 2 1;
+}
+
+.table-row-cell:selected .row-header-cell {
+    -fx-body-color: gold ;
+}

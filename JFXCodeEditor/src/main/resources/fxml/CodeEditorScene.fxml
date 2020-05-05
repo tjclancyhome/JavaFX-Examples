@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tjc.jfx.jfxcodeeditor.CodeEditorSceneController">
+    <children>
+        <ToolBar fx:id="editorRedoButton" prefHeight="40.0" prefWidth="200.0">
+            <items>
+                <Button fx:id="editorOpenButton" mnemonicParsing="false" styleClass="open-button" text="B1" />
+                <Button fx:id="editorSaveButton" mnemonicParsing="false" styleClass="save-button" text="B2" />
+                <Button fx:id="editorRefreshButton" mnemonicParsing="false" styleClass="refresh-button" text="B3" />
+                <Button fx:id="editorUndoButton" mnemonicParsing="false" styleClass="undo-button" text="B4" />
+                <Button mnemonicParsing="false" styleClass="redo-button" text="B5" />
+                <Button fx:id="editorCutButton" mnemonicParsing="false" styleClass="cut-button" text="B6" />
+                <Button fx:id="editorCopyButton" mnemonicParsing="false" styleClass="copy-button" text="B7" />
+                <Button fx:id="editorPasteButton" mnemonicParsing="false" styleClass="paste-button" text="B8" />
+                <Button fx:id="editorFindButton" mnemonicParsing="false" styleClass="find-button" text="B9" />
+                <Button fx:id="editorReplaceButton" mnemonicParsing="false" styleClass="replace-button" text="B10" />
+                <Button fx:id="editorOptionsButton" mnemonicParsing="false" styleClass="options-button" text="B11" />
+            </items>
+        </ToolBar>
+        <TextArea fx:id="editorTexArea" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+    </children>
+</VBox>

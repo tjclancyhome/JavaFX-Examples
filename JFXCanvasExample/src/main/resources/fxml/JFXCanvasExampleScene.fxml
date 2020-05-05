@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="mainWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tjc.jfx.jfxcanvasexample.JFXCanvasExampleSceneController">
+    <children>
+        <MenuBar fx:id="menuBar">
+            <menus>
+                <Menu fx:id="fileMenu" mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Close" />
+                    </items>
+                </Menu>
+                <Menu fx:id="editMenu" mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                    </items>
+                </Menu>
+                <Menu fx:id="viewMenu" mnemonicParsing="false" text="View">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Center Canvas" />
+                    </items>
+                </Menu>
+                <Menu fx:id="windowMenu" mnemonicParsing="false" text="Window">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <ToolBar prefHeight="40.0" prefWidth="200.0">
+            <items>
+                <Button fx:id="newCanvasButton" mnemonicParsing="false" onAction="#onNewCanvas" text="New Canvas" />
+                <Button fx:id="saveCanvasButton" mnemonicParsing="false" text="Save Canvas" />
+                <Button fx:id="clearCanvasButton" mnemonicParsing="false" text="Clear Canvas" />
+            </items>
+        </ToolBar>
+        <SplitPane fx:id="splitPane" dividerPositions="0.35" VBox.vgrow="ALWAYS">
+            <items>
+                <ScrollPane fx:id="treeViewScroller" fitToHeight="true" fitToWidth="true" SplitPane.resizableWithParent="false">
+                    <content>
+                        <TreeView fx:id="treeView" />
+                    </content>
+                </ScrollPane>
+                <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                    <content>
+                        <Canvas fx:id="mainCanvas" height="1024.0" width="1024.0" />
+                    </content>
+                </ScrollPane>
+            </items>
+        </SplitPane>
+        <HBox fx:id="statusBar" alignment="CENTER_LEFT" VBox.vgrow="NEVER">
+            <children>
+                <Label fx:id="leftLabel" maxHeight="1.7976931348623157E308" text="Left" HBox.hgrow="ALWAYS" />
+                <Pane fx:id="stretcherPane" HBox.hgrow="ALWAYS" />
+                <Label fx:id="rightLabel" maxHeight="1.7976931348623157E308" text="Right" />
+            </children>
+        </HBox>
+    </children>
+</VBox>

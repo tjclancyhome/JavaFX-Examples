@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
+
+<VBox fx:id="mainWindow" prefHeight="600.0" prefWidth="1120.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tjc.jfx.jfxcodeeditor.JFXCodeEditorAppSceneController">
+    <children>
+        <MenuBar fx:id="menuBar" VBox.vgrow="NEVER">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="New" />
+                        <MenuItem mnemonicParsing="false" text="Open…" />
+                        <Menu mnemonicParsing="false" text="Open Recent" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Close" />
+                        <MenuItem mnemonicParsing="false" text="Save" />
+                        <MenuItem mnemonicParsing="false" text="Save As…" />
+                        <MenuItem mnemonicParsing="false" text="Revert" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Preferences…" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Quit" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Undo" />
+                        <MenuItem mnemonicParsing="false" text="Redo" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Cut" />
+                        <MenuItem mnemonicParsing="false" text="Copy" />
+                        <MenuItem mnemonicParsing="false" text="Paste" />
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Select All" />
+                        <MenuItem mnemonicParsing="false" text="Unselect All" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <ToolBar prefHeight="40.0" prefWidth="200.0">
+            <items>
+                <Button fx:id="randomThemeButton" mnemonicParsing="false" onAction="#randomlyChangeEditorThemeButton" text="Random Theme" />
+                <Button fx:id="randomModeButton" mnemonicParsing="false" onAction="#randomlyChangeEditorModeButton" text="Random Mode" />
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <children>
+                        <Label text="Select Theme:" HBox.hgrow="ALWAYS" />
+                        <ComboBox fx:id="selectTheme" prefWidth="150.0" />
+                        <Label text="Select mode: " />
+                        <ComboBox fx:id="selectMode" prefWidth="150.0" />
+                    </children>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </HBox>
+            </items>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+        </ToolBar>
+        <SplitPane dividerPositions="0.35" VBox.vgrow="ALWAYS">
+            <items>
+                <SplitPane dividerPositions="0.35" orientation="VERTICAL" SplitPane.resizableWithParent="false">
+                    <items>
+                        <TreeView fx:id="bookMarkTreeView" editable="true" minWidth="200.0" prefHeight="534.0" prefWidth="248.0" styleClass="save-button" SplitPane.resizableWithParent="false" />
+                        <TabPane fx:id="iconsTabPane" prefHeight="686.0" prefWidth="276.0" tabClosingPolicy="UNAVAILABLE" />
+                    </items>
+                </SplitPane>
+                <VBox prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <ToolBar fx:id="editorToolBar" prefHeight="40.0" prefWidth="200.0">
+                            <items>
+                                <Button fx:id="editorOpenButton" mnemonicParsing="false" styleClass="open-button" text="Open">
+                                    <tooltip>
+                                        <Tooltip text="Open">
+                                            <font>
+                                                <Font size="12.0" />
+                                            </font>
+                                        </Tooltip>
+                                    </tooltip>
+                                </Button>
+                                <Button fx:id="editorSaveButton" mnemonicParsing="false" styleClass="save-button" text="Save" />
+                                <Button fx:id="editorRefreshButton" mnemonicParsing="false" styleClass="refresh-button" text="Reload" />
+                                <Separator fx:id="editorToolbarSep1" orientation="VERTICAL" prefHeight="27.0" />
+                                <Button fx:id="editorUndoButton" disable="true" mnemonicParsing="false" styleClass="undo-button" text="Undo" />
+                                <Button fx:id="editorRedoButton" disable="true" mnemonicParsing="false" styleClass="redo-button" text="Redo" />
+                                <Separator fx:id="editorToolbarSep2" orientation="VERTICAL" />
+                                <Button fx:id="editorCutButton" mnemonicParsing="false" styleClass="cut-button" text="Cut" />
+                                <Button fx:id="editorCopyButton" mnemonicParsing="false" styleClass="copy-button" text="Copy" />
+                                <Button fx:id="editorPasteButton" mnemonicParsing="false" styleClass="paste-button" text="Paste" />
+                                <Separator fx:id="editorToolbarSep3" orientation="VERTICAL" />
+                                <Button fx:id="editorFindButton" mnemonicParsing="false" styleClass="find-button" text="Find" />
+                                <Button fx:id="editorReplaceButton" mnemonicParsing="false" styleClass="replace-button" text="Replace" />
+                                <Separator fx:id="editorToolbarSep4" orientation="VERTICAL" />
+                                <Button fx:id="editorOptionsButton" mnemonicParsing="false" styleClass="options-button" text="Options" />
+                            </items>
+                        </ToolBar>
+                        <WebView fx:id="webEditorView" minHeight="-1.0" minWidth="200.0" prefHeight="-1.0" prefWidth="-1.0" styleClass="reload-button" stylesheets="@../styles/styles.css" VBox.vgrow="ALWAYS" />
+                        <HBox fx:id="statusBar" alignment="CENTER_LEFT" VBox.vgrow="NEVER">
+                            <children>
+                                <ProgressBar fx:id="loadingBar" prefWidth="300.0" progress="0.0" visible="false" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </items>
+        </SplitPane>
+    </children>
+</VBox>

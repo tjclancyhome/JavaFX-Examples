@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>JavaFX-12-Examples</artifactId>
+        <groupId>org.tjc.jfx</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <artifactId>JFXStickyNotes</artifactId>
+    <packaging>jar</packaging>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jlink.launcher>JFXStickyNotesApp</jlink.launcher>
+        <jlink.image.name>JFXStickyNotesApp</jlink.image.name>
+        <jlink.zip.name>JFXStickyNotesAppZip</jlink.zip.name>
+        <jlink.verbose>true</jlink.verbose>
+        <mainClass>org.tjc.jfx.jfxstickynotes.JFXStickyNotesApp</mainClass>
+    </properties>
+</project>

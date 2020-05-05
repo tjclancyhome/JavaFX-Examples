@@ -1,0 +1,2 @@
+
+Hero=/hero/BIRTH\ OF\ A\ HERO.ttf

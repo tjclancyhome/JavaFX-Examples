@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="mainView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tjc.jfx.jfxmlinteractivecanvas.JFXMLInteractiveCanvasSceneController">
+   <children>
+      <MenuBar VBox.vgrow="NEVER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+            <Menu fx:id="viewMenu" mnemonicParsing="false" text="View">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#onClearCanvas" text="Clear Canvas" />
+              </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Debug">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#onDrawRandomPixels" text="Draw Random Pixels" />
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+      <ToolBar fx:id="toolBar" VBox.vgrow="NEVER">
+        <items>
+            <VBox fx:id="penSizeVbox" alignment="CENTER" spacing="5.0">
+               <children>
+                  <ComboBox fx:id="penSizeComboBox" editable="true" onAction="#onChangePenSize" prefHeight="27.0" prefWidth="104.0" VBox.vgrow="NEVER" />
+                  <Label text="Pen Size" VBox.vgrow="NEVER" />
+               </children>
+            </VBox>
+            <VBox fx:id="penColorVbox" alignment="CENTER" spacing="5.0">
+               <children>
+                  <ColorPicker fx:id="penColorPicker" editable="true" onAction="#onChangePenColor" promptText="Pen Color" VBox.vgrow="NEVER" />
+                  <Label text="Pen Color" VBox.vgrow="NEVER" />
+               </children>
+            </VBox>
+            <VBox fx:id="canvasColorVbox" alignment="CENTER" spacing="5.0">
+               <children>
+                  <ColorPicker fx:id="backgroundColorPicker" editable="true" onAction="#onChangeBackgroundColor" promptText="Background Color" VBox.vgrow="NEVER" />
+                  <Label text="Canvas Color" />
+               </children>
+            </VBox>
+            <VBox fx:id="opacitySliderVbox" alignment="CENTER" prefHeight="60.0" prefWidth="162.0">
+               <children>
+                  <Slider fx:id="opacitySlider" blockIncrement="1.0" majorTickUnit="0.25" max="1.0" onMouseClicked="#onOpacityMouseClicked" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" VBox.vgrow="NEVER" />
+                  <Label text="Opacity" VBox.vgrow="NEVER" />
+               </children>
+            </VBox>
+        </items>
+      </ToolBar>
+      <ScrollPane fx:id="stackPaneScrollPane" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+         <content>
+            <StackPane fx:id="canvasStackPane" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: LIGHTBLUE;">
+               <children>
+                  <Canvas fx:id="canvas" height="389.0" onMouseDragged="#onOpacityMouseDragged" onMouseReleased="#onOpacityMouseReleased" width="622.0" StackPane.alignment="CENTER" />
+               </children>
+            </StackPane>
+         </content>
+      </ScrollPane>
+   </children>
+</VBox>
