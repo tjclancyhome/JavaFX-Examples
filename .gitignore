@@ -62,6 +62,7 @@ out/
 build/
 dist/
 tmp/
+cloc*
 *.swp
 .resourceCache/
 .sts4-cache/
@@ -75,10 +76,8 @@ jshell.history
 /JFXTurtles/nbproject/
 _config.yml
 .java-version
-/AngularJSPhoneCat/nbproject/private/
 /JFXBouncingBalls/nbproject/
 /TurtlesApp/nbproject/
 /ExamplesGenerator/nbproject/
 /JFXGraphviz/nbproject/
 /JFXComponents/nbproject/
-/AngularJSPhoneCat/node_modules/
