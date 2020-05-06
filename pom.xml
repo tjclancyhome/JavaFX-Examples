@@ -65,9 +65,9 @@
         <module>JFXMLCanvasGraphics</module>
         <module>JFXMLInteractiveCanvas</module>
         <module>JFXCanvasBaseApp</module>
-        <module>JFXBouncingBalls</module>
-        <module>JFXParticleSystem</module>
-        <module>JFXFractals</module>
+        <!--<module>JFXBouncingBalls</module>-->
+        <!--<module>JFXParticleSystem</module>-->
+        <!--<module>JFXFractals</module>-->
         <module>GameOfLife</module>
         <module>TurtlesApp</module>
     </modules>
