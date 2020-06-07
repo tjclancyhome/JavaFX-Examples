@@ -8,32 +8,32 @@ This project is a partent project to a number JavaFX example projects that I am 
 | :-------------- | ----------- | ------------- |
 | JFXComponents   | JavaFX components and controls used in the JavaFX example apps | WIP |
 | JFXSimpleGraph | This is a hodge-podge of code that was intended to show how to draw edge-node graphs. It doesn't do this. But it is full or various examples from drawing and rotating shapes and attempting to show how you can simulate MDI desktop with various app windows. | WIP |
-| JFXSandbox |  |  |
+| JFXSandbox |  | WIP |
 | JFXSandboxFxml |  |  |
 | JFXGraphviz     | A JavaFX application that spawns processes to dot and then displays the image in an ImageView. | WIP |
-| JFXSandboxBasicFxmlApp |  |  |
-| JFXCanvasExample |  |  |
+| JFXSandboxBasicFxmlApp |  | WIP |
+| JFXCanvasExample |  | WIP |
 | JFXCodeEditor   | A syntax highlighting code editor that uses [Ace](https://ace.c9.io/) in a JavaFX WebView. | WIP |
-| JFXRichTextFX |  |  |
-| JFXPropertiesAndListeners |  |  |
-| JFXSpreadSheet |  |  |
-| JFXSamplesAndDemos |  |  |
-| JFXRegExApp |  |  |
-| JFXRootExample |  |  |
-| JFXControllerExamples |  |  |
-| JFXShapes |  |  |
-| AceEditorExample |  |  |
-| JFXFontExamples |  |  |
-| TestingFonts |  |  |
-| JFXStickyNotes |  |  |
-| JFXHexViewer |  |  |
-| JFXHexEditor |  |  |
-| JFXGameOfLife |  |  |
-| JFXTurtles |  |  |
-| JFXGraphviz |  |  |
-| JFXMLCanvasGraphics |  |  |
-| JFXMLInteractiveCanvas |  |  |
-| JFXCanvasBaseApp |  |  |
-| GameOfLife |  |  |
-| TurtlesApp |  |  |
+| JFXRichTextFX |  | WIP |
+| JFXPropertiesAndListeners |  | WIP |
+| JFXSpreadSheet |  | WIP |
+| JFXSamplesAndDemos |  | WIP |
+| JFXRegExApp |  | WIP |
+| JFXRootExample |  | WIP |
+| JFXControllerExamples |  | WIP |
+| JFXShapes |  | WIP |
+| AceEditorExample |  | WIP |
+| JFXFontExamples |  | WIP |
+| TestingFonts |  | WIP |
+| JFXStickyNotes |  | WIP |
+| JFXHexViewer |  | WIP |
+| JFXHexEditor |  | WIP |
+| JFXGameOfLife |  | WIP |
+| JFXTurtles |  | WIP |
+| JFXGraphviz |  | WIP |
+| JFXMLCanvasGraphics |  | WIP |
+| JFXMLInteractiveCanvas |  | WIP |
+| JFXCanvasBaseApp |  | WIP |
+| GameOfLife |  | WIP |
+| TurtlesApp |  | WIP |
 

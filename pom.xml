@@ -14,12 +14,11 @@
         <maven.compiler.target>${version.java}</maven.compiler.target>
         <version.javafx.maven.plugin>0.0.4</version.javafx.maven.plugin>
         <!--
-        I saw someone else's POM file and used this convention for specifying version for
+        I saw someone else's POM file and used this convention for specifying versions for
         dependencies. Not sure if I'll stick with it, but it does help when looking for version
         properties.
         -->
         <version.openjfx>13.0.2</version.openjfx>
-        <!--<version.jackson.core>2.10.3</version.jackson.core>-->
         <version.jackson.core>[2.9.10.4,)</version.jackson.core>
         <!--<version.terminalfx>1.1.0</version.terminalfx>-->
         <version.junit.jupiter>5.5.2</version.junit.jupiter>
@@ -65,9 +64,6 @@
         <module>JFXMLCanvasGraphics</module>
         <module>JFXMLInteractiveCanvas</module>
         <module>JFXCanvasBaseApp</module>
-        <!--<module>JFXBouncingBalls</module>-->
-        <!--<module>JFXParticleSystem</module>-->
-        <!--<module>JFXFractals</module>-->
         <module>GameOfLife</module>
         <module>TurtlesApp</module>
     </modules>
