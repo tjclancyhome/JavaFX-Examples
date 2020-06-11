@@ -1,6 +1,6 @@
 # JavaFX-Examples
 
-#### *Note: This software is not finished, and there are a lot of ideas that I'm still working through. As I complete each example I'll add a note to the status column of the table below.*
+***Note: This software is not finished, and there are a lot of ideas that I'm still working through. As I complete each example I'll add a note to the status column of the table below.***
 
 ***
 
