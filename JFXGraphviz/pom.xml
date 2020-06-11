@@ -16,4 +16,11 @@
         <jlink.verbose>true</jlink.verbose>
         <mainClass>org.tjc.jfx.jfxgraphviz.JFXGraphvizApp</mainClass>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.jfree</groupId>
+            <artifactId>org.jfree.svg</artifactId>
+            <version>4.1</version>
+        </dependency>
+    </dependencies>
 </project>

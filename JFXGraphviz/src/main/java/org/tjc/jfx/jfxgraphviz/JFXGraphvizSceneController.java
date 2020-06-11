@@ -192,8 +192,11 @@ public class JFXGraphvizSceneController {
 
         log.debug("###    calling dot(...)");
 //        gvp.dot("-Tjpg", "-Tsvg", "-Tpng", "-s300.0", "-O", dotFile.getAbsolutePath());
-        gvp.dot("-Tpng", "-Tsvg", "-s300.0", "-O", dotFile.getAbsolutePath());
+//        gvp.dot("-Tpng", "-Tsvg", "-s300.0", "-O", dotFile.getAbsolutePath());
+//        gvp.dot("-Tpng", "-Tsvg", "-Gsize=2,2", "-s1.5", "-O", dotFile.getAbsolutePath());
 //        gvp.neato("-Tpng", "-s300.0", "-O", dotFile.getAbsolutePath());
+        gvp.dot("-Tpng", "-Gdpi=100.0", "-Gsize=25,25", "-Gratio=1", "-Gcenter=10", "-O", dotFile
+            .getAbsolutePath());
 
         log.debug("###    Returned from dot process... this is a good sign.");
 
