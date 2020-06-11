@@ -1,5 +1,9 @@
 # JavaFX-Examples
 
+#### *Note: This software is not finished, and there are a lot of ideas that I'm still working through. As I complete each example I'll add a note to the status column of the table below.*
+
+***
+
 Originally this project was named JavaFX-12-Examples, but because it can be built from Jdk11 up, I just renamed it. I thought dispell any confusion.
 
 This project is a partent project to a number JavaFX example projects that I am creating as a series of articles or tutorials.
