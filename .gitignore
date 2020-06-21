@@ -82,4 +82,6 @@ _config.yml
 /JFXGraphviz/nbproject/
 /JFXComponents/nbproject/
 *bak
-
+/JFXGraphviz/src/test/resources/samples/*.png
+/JFXGraphviz/src/test/resources/samples/*.jpg
+/JFXGraphviz/src/test/resources/samples/*.jpeg
