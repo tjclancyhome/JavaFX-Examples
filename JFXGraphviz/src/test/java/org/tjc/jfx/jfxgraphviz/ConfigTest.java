@@ -25,10 +25,14 @@ package org.tjc.jfx.jfxgraphviz;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
+
 import static org.tjc.common.unittest.UnitTestSupport.writeln;
-import org.tjc.jfx.jfxgraphviz.config.Config;
+
+import org.tjc.jfx.jfxgraphviz.config.Configure;
 
 /**
  *
@@ -40,27 +44,27 @@ public class ConfigTest {
     }
 
     /**
-     * Test of getProperty method, of class Config.
+     * Test of getProperty method, of class Configure.
      */
     @Test
     public void testGetProperty_String() {
     }
 
     /**
-     * Test of getProperty method, of class Config.
+     * Test of getProperty method, of class Configure.
      */
     @Test
     public void testGetProperty_String_String() {
     }
 
     /**
-     * Test of getUserHomePath method, of class Config.
+     * Test of getUserHomePath method, of class Configure.
      *
      * @throws java.lang.Exception
      */
     @Test
     public void testGetUserHomePath() throws Exception {
-        Config config = Config.getInstance();
+        Configure config = Configure.getInstance();
         Path path = config.getPathToUserHome();
         assertTrue(Files.exists(path));
         writeln("path: {0} exists.", path);

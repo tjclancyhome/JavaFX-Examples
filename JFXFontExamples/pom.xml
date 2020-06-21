@@ -15,7 +15,9 @@
         <jlink.zip.name>JFXFontExamplesAppZip</jlink.zip.name>
         <jlink.verbose>true</jlink.verbose>
         <mainClass>org.tjc.jfx.jfxfontexamples.JFXFontExamplesApp</mainClass>
+        <!--
         <version.pdfbox>2.0.17</version.pdfbox>
         <version.tika>1.23</version.tika>
+        -->
     </properties>
 </project>

@@ -8,21 +8,19 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>13</java.version>
+        <java.version>12</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <!--<version.openjfx>12.0.2</version.openjfx>-->
-        <version.openjfx>13</version.openjfx>
+        <version.openjfx>12</version.openjfx>
         <version.logback.classic>1.3.0-alpha4</version.logback.classic>
         <version.org.testfx>4.0.16-alpha</version.org.testfx>
         <version.javafx.maven.plugin>0.0.3</version.javafx.maven.plugin>
         <version.junit.jupiter>5.6.0</version.junit.jupiter>
         <version.assertj>3.13.2</version.assertj>
-        <version.common.unittest>1.0.0-jre12-SNAPSHOT</version.common.unittest>
+        <version.common.unittest>1.0.0-jre11-SNAPSHOT</version.common.unittest>
         <unitTestSupportShowOutput>true</unitTestSupportShowOutput>
         <jlink.verbose>true</jlink.verbose>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.openjfx</groupId>

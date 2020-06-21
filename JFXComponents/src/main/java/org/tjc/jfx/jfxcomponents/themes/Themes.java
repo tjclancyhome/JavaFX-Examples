@@ -26,6 +26,7 @@ package org.tjc.jfx.jfxcomponents.themes;
 import javafx.scene.Scene;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import static org.tjc.jfx.jfxcomponents.utils.Bool.not;
 
 /**
@@ -55,7 +56,8 @@ public class Themes {
      * Adds the darkmode theme css name to the Scene's list of stylesheets.
      *
      * @param pathToThemeCss The name of the css file path (e.g. '/css/themes/dark-theme.css')
-     * @param on             Switches the darkmode theme on or of given the value of the 'on' parameter.
+     * @param on             Switches the darkmode theme on or of given the value of the 'on'
+     *                       parameter.
      * @param scene          The Scene to add or remove the darkmode theme.
      *
      * @deprecated Use setTheme instead.
@@ -73,10 +75,12 @@ public class Themes {
      * @param scene          The Scene to add or remove the theme.
      */
     public static void setTheme(String pathToThemeCss, boolean on, Scene scene) {
-        log.debug("### entered setTheme(): pathToThemeCss: {}, on: {}, scene: {}", pathToThemeCss, on, scene);
+        log.debug("### entered setTheme(): pathToThemeCss: {}, on: {}, scene: {}", pathToThemeCss,
+            on, scene);
 
         if (log.isDebugEnabled()) {
-            scene.getStylesheets().forEach(styleSheet -> log.debug("### styleSheet: {}", styleSheet));
+            scene.getStylesheets()
+                .forEach(styleSheet -> log.debug("### styleSheet: {}", styleSheet));
         }
 
         if (on) {
@@ -88,7 +92,6 @@ public class Themes {
             log.debug("### dark mode not on, removing dark mode theme style.");
             scene.getStylesheets().remove(pathToThemeCss);
         }
-
     }
 
     public static String formatThemeName(String themeCssRoot, String themeCss) {

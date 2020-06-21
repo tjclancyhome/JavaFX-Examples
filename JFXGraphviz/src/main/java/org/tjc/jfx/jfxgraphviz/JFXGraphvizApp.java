@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tjc.jfx.jfxcomponents.application.JFXFxmlExamplesApplication;
-import org.tjc.jfx.jfxgraphviz.config.Config;
+//import org.tjc.jfx.jfxgraphviz.config.Config;
 
 /**
  * JavaFX JFXGraphvizApp
@@ -21,12 +21,10 @@ import org.tjc.jfx.jfxgraphviz.config.Config;
  * @version $Id: $Id
  */
 public class JFXGraphvizApp extends JFXFxmlExamplesApplication {
-
     private static final Logger log = LoggerFactory.getLogger(JFXGraphvizApp.class);
 
     private Scene scene;
     private JFXGraphvizSceneController controller;
-    private Config config;
 
     /**
      * {@inheritDoc}
@@ -35,7 +33,6 @@ public class JFXGraphvizApp extends JFXFxmlExamplesApplication {
     public void start(Stage primaryStage) throws Exception {
         log.debug("### entered init(Stage)");
 
-        config = Config.getInstance();
         FXMLLoader fxmlLoader = createFxmlLoader(getClass().getResource("JFXGraphvizScene.fxml"));
         Parent parent = fxmlLoader.load();
         controller = fxmlLoader.getController();

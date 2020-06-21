@@ -6,7 +6,7 @@
         <groupId>org.tjc.jfx</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>GameOfLie</artifactId>
+    <artifactId>GameOfLife</artifactId>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -16,4 +16,5 @@
         <jlink.verbose>true</jlink.verbose>
         <mainClass>org.tjc.jfx.gameoflife.${project.artifactId}</mainClass>
     </properties>
+    <name>GameOfLife</name>
 </project>

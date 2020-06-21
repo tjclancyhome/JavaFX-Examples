@@ -26,14 +26,16 @@ package org.tjc.jfx.jfxcomponents.utils;
 import java.io.File;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import static java.util.Arrays.asList;
 import java.util.List;
 import java.util.Objects;
 import javafx.scene.Scene;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 
+import static java.util.Arrays.asList;
+
 /**
+ * This uses a javafx FileChooser object internally.
  *
  * @author tjclancy
  */
@@ -59,7 +61,8 @@ public class FileSelector {
         return new FileSelector(scene, title);
     }
 
-    public static FileSelector newInstance(Scene scene, String title, ExtensionFilter... extensionFilters) {
+    public static FileSelector newInstance(Scene scene, String title,
+        ExtensionFilter... extensionFilters) {
         return new FileSelector(scene, title, extensionFilters);
     }
 

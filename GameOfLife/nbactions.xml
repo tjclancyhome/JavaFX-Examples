@@ -6,7 +6,7 @@
                 <packaging>*</packaging>
             </packagings>
             <goals>
-                <goal>-r</goal>
+                <goal>-e</goal>
                 <goal>clean</goal>
                 <goal>install</goal>
             </goals>

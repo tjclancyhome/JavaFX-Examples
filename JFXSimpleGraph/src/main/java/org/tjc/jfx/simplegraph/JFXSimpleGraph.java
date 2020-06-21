@@ -160,8 +160,8 @@ public class JFXSimpleGraph extends JFXFxmlExamplesApplication {
          * We make each rectangle flush-left with left edge of circle.
          */
         rootGroup.getChildren().addAll(
-                createRectangle(40 - circ.getRadius(), 80, 60, 60, Color.BLUE),
-                createRectangle(40 - circ.getRadius(), 160, 60, 60, Color.YELLOW));
+            createRectangle(40 - circ.getRadius(), 80, 60, 60, Color.BLUE),
+            createRectangle(40 - circ.getRadius(), 160, 60, 60, Color.YELLOW));
 
         var triangle1 = createTriangle(200, 100, Color.SILVER, true);
         rootGroup.getChildren().add(triangle1);
@@ -176,8 +176,8 @@ public class JFXSimpleGraph extends JFXFxmlExamplesApplication {
         sleep(1000);
 
         rootGroup.getChildren().addAll(
-                createPolyLine(),
-                new Text("Hello!"));
+            createPolyLine(),
+            new Text("Hello!"));
 
         var simplePaneSceneNode = createNodeFromFXMLFile("SimplePaneScene.fxml");
         simplePaneSceneNode.relocate(300, 250);
@@ -199,14 +199,14 @@ public class JFXSimpleGraph extends JFXFxmlExamplesApplication {
 
     private Circle createCircle(double centerX, double centerY, double radius, Paint fill) {
         log.debug("### entered createCircle(): centerX: {}, centerY: {}, radius: {}, fill: {}",
-                centerX, centerY, radius, fill);
+            centerX, centerY, radius, fill);
         var circle = new Circle(centerX, centerY, radius, fill);
         circle.setOnMousePressed(nodeOnMousePressedEventHandler);
         circle.setOnMouseDragged(nodeOnMouseDraggedEventHandler);
         circle.setOnMouseReleased(nodeOnMouseReleasedEventHandler);
         circle.setOnMouseEntered((Event t) -> {
             log.debug("###     mouse entered circle: source: {}, target: {}", t.getSource(), t
-                    .getTarget());
+                .getTarget());
         });
         circle.setOnMouseExited(event -> {
 
@@ -237,7 +237,7 @@ public class JFXSimpleGraph extends JFXFxmlExamplesApplication {
 
     private Polygon createTriangle(double x, double y, Paint fill, boolean rotate) {
         log.debug("### entered createTriangle(x: {}, y: {}, fill: {}, rotate: {})",
-                x, y, fill, rotate);
+            x, y, fill, rotate);
         Double[] triangleCoords = new Double[] {50.0, 0.0, 40.0, 25.0, 60.0, 25.0};
 
         var triangle = createPolygon(triangleCoords, fill);
@@ -246,16 +246,19 @@ public class JFXSimpleGraph extends JFXFxmlExamplesApplication {
 
 
         log.debug("###     before relocate triangle: {}", triangle);
-        log.debug("###     triangle.getBoundsInParent().getCenterX(): {}", triangle.getBoundsInParent()
-                .getCenterX());
-        log.debug("###     triangle.getBoundsInParent().getCenterY(): {}", triangle.getBoundsInParent()
-                .getCenterY());
+        log.debug("###     triangle.getBoundsInParent().getCenterX(): {}", triangle
+            .getBoundsInParent().getCenterX());
+        log.debug("###     triangle.getBoundsInParent().getCenterY(): {}", triangle
+            .getBoundsInParent()
+            .getCenterY());
         log.debug("###     relocating to: x: {}, y:{}", x, y);
         triangle.relocate(x, y);
-        log.debug("###     triangle.getBoundsInParent().getCenterX(): {}", triangle.getBoundsInParent()
-                .getCenterX());
-        log.debug("###     triangle.getBoundsInParent().getCenterY(): {}", triangle.getBoundsInParent()
-                .getCenterY());
+        log.debug("###     triangle.getBoundsInParent().getCenterX(): {}", triangle
+            .getBoundsInParent()
+            .getCenterX());
+        log.debug("###     triangle.getBoundsInParent().getCenterY(): {}", triangle
+            .getBoundsInParent()
+            .getCenterY());
         log.debug("###     after relocate triangle: {}", triangle);
 
         if (rotate == true) {
@@ -273,10 +276,10 @@ public class JFXSimpleGraph extends JFXFxmlExamplesApplication {
 
             final var rotationAnimation = new Timeline();
             rotationAnimation.getKeyFrames().add(
-                    new KeyFrame(
-                            DURATION,
-                            new KeyValue(
-                                    rotationTransform.angleProperty(), 360)));
+                new KeyFrame(
+                    DURATION,
+                    new KeyValue(
+                        rotationTransform.angleProperty(), 360)));
             rotationAnimation.setCycleCount(Animation.INDEFINITE);
             rotationAnimation.play();
         }
@@ -357,8 +360,8 @@ public class JFXSimpleGraph extends JFXFxmlExamplesApplication {
 
         var button = new Button("Press Me!");
         button.setOnAction(event -> {
-            System.out.println(textField.getCharacters());
-            System.out.println("Button pressed! event: " + event);
+            log.debug("{}", textField.getCharacters());
+            log.debug("Button pressed! event: {}", event);
         });
         borderPane.setTop(new Button("Don't Press Me"));
         borderPane.setLeft(new Button("Don't Press Me"));
@@ -389,7 +392,7 @@ public class JFXSimpleGraph extends JFXFxmlExamplesApplication {
         var dragContext = new DragContext();
         var wrapGroup = new Group(node);
 
-        wrapGroup.addEventFilter(MouseEvent.ANY, (final                                                                                                                            var mouseEvent) -> {
+        wrapGroup.addEventFilter(MouseEvent.ANY, (final                                                                                                                                     var mouseEvent) -> {
             if (dragModeActiveProperty.get()) {
                 mouseEvent.consume();
             }
@@ -415,18 +418,18 @@ public class JFXSimpleGraph extends JFXFxmlExamplesApplication {
             if (dragModeActiveProperty.get()) {
                 scene.setCursor(Cursor.HAND);
                 node.setTranslateX(
-                        dragContext.initialTranslateX
-                        + mouseEvent.getX()
-                        - dragContext.mouseAnchorX);
+                    dragContext.initialTranslateX
+                    + mouseEvent.getX()
+                    - dragContext.mouseAnchorX);
                 node.setTranslateY(
-                        dragContext.initialTranslateY
-                        + mouseEvent.getY()
-                        - dragContext.mouseAnchorY);
+                    dragContext.initialTranslateY
+                    + mouseEvent.getY()
+                    - dragContext.mouseAnchorY);
                 mouseEvent.consume();
             }
         });
 
-        wrapGroup.addEventFilter(MouseEvent.MOUSE_RELEASED, (final                          var mouseEvent) -> {
+        wrapGroup.addEventFilter(MouseEvent.MOUSE_RELEASED, (final     var mouseEvent) -> {
             log.debug("### entered wrapGroup eventFilter MOUSE_RELEASED: event: {}", mouseEvent);
             if (dragModeActiveProperty.get()) {
                 wrapGroup.setOpacity(1.0);
@@ -444,7 +447,7 @@ public class JFXSimpleGraph extends JFXFxmlExamplesApplication {
         @Override
         public void handle(MouseEvent event) {
             log.debug("### entered nodeOnMousePressedEventHandler handler: mouse event: {}",
-                    event);
+                event);
             orgSceneX = event.getSceneX();
             orgSceneY = event.getSceneY();
             if (event.getSource() instanceof Node) {
@@ -457,7 +460,7 @@ public class JFXSimpleGraph extends JFXFxmlExamplesApplication {
             }
             event.consume();
             log.debug("### exited nodeOnMousePressedEventHandler handler: mouse event: {}",
-                    event);
+                event);
         }
     };
 
@@ -465,7 +468,7 @@ public class JFXSimpleGraph extends JFXFxmlExamplesApplication {
         @Override
         public void handle(MouseEvent event) {
             log.debug("### entered nodeOnMouseDraggedEventHandler handler: mouse event: {}",
-                    event);
+                event);
             double offsetX = event.getSceneX() - orgSceneX;
             double offsetY = event.getSceneY() - orgSceneY;
             double newTranslateX = orgTranslateX + offsetX;
@@ -485,7 +488,7 @@ public class JFXSimpleGraph extends JFXFxmlExamplesApplication {
         @Override
         public void handle(MouseEvent event) {
             log.debug("### entered nodeOnMouseReleasedEventHandler handler: mouse event: {}",
-                    event);
+                event);
             double offsetX = event.getSceneX() - orgSceneX;
             double offsetY = event.getSceneY() - orgSceneY;
             double newTranslateX = orgTranslateX + offsetX;
@@ -500,7 +503,7 @@ public class JFXSimpleGraph extends JFXFxmlExamplesApplication {
             }
             event.consume();
             log.debug("### exited nodeOnMouseReleasedEventHandler handler: mouse event: {}",
-                    event);
+                event);
         }
     };
 

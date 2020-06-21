@@ -263,7 +263,8 @@ public class JFXMLInteractiveCanvasSceneController {
         Color canvasFill = getCanvasFillColor();
 //        Color newCanvasFill = Color.color(canvasFill.getRed(), canvasFill.getGreen(), canvasFill.getBlue(),
 //            opacity);
-        Color newCanvasFill = Color.color(canvasFill.getRed(), canvasFill.getGreen(), canvasFill.getBlue());
+        Color newCanvasFill = Color.color(canvasFill.getRed(), canvasFill.getGreen(), canvasFill
+            .getBlue());
         setCanvasFillColor(newCanvasFill);
         clearCanvas();
         log.debug("### exited setCanvasOpacity()");

@@ -79,8 +79,16 @@ public class Borders {
      */
     public void addBorder(Region region, Paint paint) {
         log.debug("### entered addBorder(region, paint): region: {}, paint: {}", region, paint);
-        Objects.requireNonNull(region, () -> "The 'region' argument is null.");
-        Objects.requireNonNull(paint, () -> "The 'paint' argument is null.");
+        if (region == null) {
+            log.warn("The region is null. Just return.");
+            return;
+        }
+        if (paint == null) {
+            log.warn("The paint argument is null");
+            return;
+        }
+//        Objects.requireNonNull(region, () -> "The 'region' argument is null.");
+//        Objects.requireNonNull(paint, () -> "The 'paint' argument is null.");
         BorderToggler bt = new BorderToggler(createBorder(paint), region);
         borderTogglers.add(bt);
     }
@@ -127,7 +135,6 @@ public class Borders {
      *
      * @return The region to which a border was added.
      */
-    @Deprecated
     public <T extends Region> T add(T region) {
         if (region == null) {
             return null;
@@ -138,14 +145,14 @@ public class Borders {
     }
 
     /**
-     * Adds the region to the toggler and then returns the region. This was king of a way to do
-     * something like this:
+     * Adds the region to the toggler and then returns the region.
+     *
      * <pre>
+     * <code>
      *      var TreeView = border.add(new TreeView());
      *
-     *      // or
-     *
      *      var TreeVew = border.add(new TreeView(), Color.GREEN)
+     * </code>
      * </pre>
      *
      * @param <T>    The regtion type.
@@ -154,7 +161,6 @@ public class Borders {
      *
      * @return The region to which a border was added.
      */
-    @Deprecated
     public <T extends Region> T add(T region, Paint paint) {
         if (region == null) {
             return null;

@@ -39,6 +39,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SplitPane;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToolBar;
 import javafx.scene.control.TreeView;
 import javafx.scene.image.Image;
@@ -47,9 +48,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser.ExtensionFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.tjc.jfx.jfxcomponents.statusbar.StatusBar;
 import org.tjc.jfx.jfxcomponents.utils.FileSelector;
 import org.tjc.jfx.jfxcomponents.utils.Nodes;
-import org.tjc.jfx.jfxgraphviz.config.Config;
+import org.tjc.jfx.jfxgraphviz.config.Configure;
 
 /**
  * FXML Controller class
@@ -58,7 +60,6 @@ import org.tjc.jfx.jfxgraphviz.config.Config;
  * @version $Id: $Id
  */
 public class JFXGraphvizSceneController {
-
     /**
      * Constant <code>log</code>
      */
@@ -68,8 +69,6 @@ public class JFXGraphvizSceneController {
     private VBox mainWindow;
     @FXML
     private ScrollPane imagedTreeViewScrollPane;
-    @FXML
-    private TreeView<?> imagesTreeView;
     @FXML
     private Button dotButton;
     @FXML
@@ -91,22 +90,28 @@ public class JFXGraphvizSceneController {
     @FXML
     private Button neatoButton;
     @FXML
-    private ProgressBar progressBar;
-    @FXML
     private SplitPane splitPane;
     @FXML
     private ToolBar toolBar;
     @FXML
     private Menu zoomMenu;
+    @FXML
+    private ToggleButton toggleGenerateSvg;
+    @FXML
+    private TreeView<?> graphStoreTreeView;
 
     private Scene scene;
-    private final Config config;
+    private final Configure config;
     private final BooleanProperty imageLoadedProperty;
     private Path commandLineFilePath;
+    private final BooleanProperty generateSvgProperty;
+    private StatusBar statusBar;
+    private ProgressBar progressBar;
 
     public JFXGraphvizSceneController() {
         this.imageLoadedProperty = new SimpleBooleanProperty(false);
-        this.config = Config.getInstance();
+        this.generateSvgProperty = new SimpleBooleanProperty(false);
+        this.config = Configure.getInstance();
     }
 
     public void setCommandLineFilePath(Path commandLineFilePath) {
@@ -123,23 +128,31 @@ public class JFXGraphvizSceneController {
             log.debug("###     child node id: {}", node.getId());
         });
 
-        debugPrintEnvironment();
+//        debugPrintEnvironment();
         debugPrintImageScrollPaneProperties();
+        debugPrintImageViewInfo();
 
         Nodes nodes = new Nodes(mainWindow);
         nodes.dump();
 
-        progressBar.setVisible(true);
 
         menuItemActualSize.disableProperty().bind(imageLoadedProperty.not());
         menuItemZoomIn.disableProperty().bind(imageLoadedProperty.not());
         menuItemZoomOut.disableProperty().bind(imageLoadedProperty.not());
         menuItemZoomToFit.disableProperty().bind(imageLoadedProperty.not());
 
+        progressBar = new ProgressBar(0.0);
+        progressBar.setPrefWidth(250);
+        progressBar.setMinWidth(250);
+        progressBar.setVisible(true);
+        statusBar = new StatusBar();
+        statusBar.addNodeToLeftContainer(progressBar);
+
+
         /*
          * Add new StatusBar control.
          */
-        mainWindow.getChildren().add(new StatusBar());
+        mainWindow.getChildren().add(statusBar);
 
         log.debug("### exited initialize()");
     }
@@ -214,6 +227,7 @@ public class JFXGraphvizSceneController {
             imageView.setSmooth(true);
             imageView.setCache(true);
             this.imageLoadedProperty.set(true);
+            debugPrintImageViewInfo();
         }
         log.debug("### exited openFile()");
 
@@ -328,6 +342,15 @@ public class JFXGraphvizSceneController {
         }
     }
 
+    @FXML
+    private void onToggleGenerateSvg(ActionEvent event) {
+        generateSvgProperty.setValue(toggleGenerateSvg.isSelected());
+    }
+
+    @FXML
+    private void onQuit(ActionEvent event) {
+    }
+
     private void debugPrintImageScrollPaneProperties() {
         if (log.isDebugEnabled()) {
             log.debug("###");
@@ -346,9 +369,26 @@ public class JFXGraphvizSceneController {
         if (log.isDebugEnabled()) {
             log.debug("###");
             log.debug("### ====================================");
-            log.debug("### Printing current system snvironment:");
+            log.debug("### Printing current system environment:");
             log.debug("### ====================================");
             System.getenv().forEach((k, v) -> log.debug("### {} -> {}", k, v));
+            log.debug("### ====================================");
+            log.debug("###");
+        }
+    }
+
+    private void debugPrintImageViewInfo() {
+        if (log.isDebugEnabled()) {
+            log.debug("###");
+            log.debug("### ====================================");
+            log.debug("### Printing imageView info:");
+            log.debug("### ====================================");
+            log.debug("### viewport : {}", imageView.getViewport());
+            log.debug("### fitHeight: {}", imageView.getFitHeight());
+            log.debug("### fitWidth : {}", imageView.getFitWidth());
+            log.debug("### image    : {}", imageView.getImage());
+            log.debug("### x        : {}", imageView.getX());
+            log.debug("### y        : {}", imageView.getY());
             log.debug("### ====================================");
             log.debug("###");
         }

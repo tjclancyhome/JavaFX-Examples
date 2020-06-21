@@ -29,11 +29,13 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.file.Path;
 import java.util.ArrayList;
+
 import static java.util.Arrays.asList;
+
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.tjc.jfx.jfxgraphviz.config.Config;
+import org.tjc.jfx.jfxgraphviz.config.Configure;
 
 /**
  * <p>
@@ -48,7 +50,7 @@ public class GraphvizProcessor {
     private static final String PATH_TO_DOT_KEY = "path.to.dot";
     private static final String PATH_TO_NEATO_KEY = "path.to.neato";
 
-    private final Config config;
+    private final Configure config;
 
     /**
      * <p>
@@ -58,17 +60,17 @@ public class GraphvizProcessor {
      */
     public GraphvizProcessor() throws GraphvizProcessorException {
         log.debug("### entered GraphvizProcessor() constructor.");
-        this.config = Config.getInstance();
+        this.config = Configure.getInstance();
     }
 
 //    /**
 //     * <p>
 //     * Constructor for GraphvizProcessor.</p>
 //     *
-//     * @param config a {@link org.tjc.jfx.jfxgraphviz.Config} object.
+//     * @param config a {@link org.tjc.jfx.jfxgraphviz.Configure} object.
 //     */
-//    public GraphvizProcessor(Config config) {
-//        log.debug("### entered GraphvizProcessor(Config) constructor.");
+//    public GraphvizProcessor(Configure config) {
+//        log.debug("### entered GraphvizProcessor(Configure) constructor.");
 //        this.config = config;
 //    }
     /**

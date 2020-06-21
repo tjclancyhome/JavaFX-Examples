@@ -25,6 +25,7 @@ package org.tjc.jfx.jfxcomponents.statusbar;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
@@ -142,28 +143,33 @@ public class StatusBar extends BorderPane {
 
     private void init() {
         VBox.setVgrow(this, Priority.NEVER);
+        this.setPadding(new Insets(5));
 
-        HBox leftContainer = new HBox();
+        HBox leftContainer = new HBox(10);
         leftContainer.setAlignment(Pos.CENTER_LEFT);
         leftContainer.setFillHeight(true);
-        setLeft(leftContainer);
+        //leftContainer.setPadding(new Insets(2, 5, 2, 5));
+        this.setLeft(leftContainer);
         leftContainerProperty = new SimpleObjectProperty<>(leftContainer);
 
-        HBox centerContainer = new HBox();
-        centerContainer.setAlignment(Pos.CENTER_LEFT);
+        HBox centerContainer = new HBox(10);
+        centerContainer.setAlignment(Pos.CENTER);
         centerContainer.setFillHeight(true);
-        setCenter(centerContainer);
+        //centerContainer.setPadding(new Insets(2, 5, 2, 5));
+        this.setCenter(centerContainer);
         centerContainerProperty = new SimpleObjectProperty<>(centerContainer);
 
-        HBox righContainer = new HBox();
-        righContainer.setAlignment(Pos.CENTER_LEFT);
-        righContainer.setFillHeight(true);
-        setRight(righContainer);
-        rightContainerProperty = new SimpleObjectProperty<>(righContainer);
+        HBox rightContainer = new HBox(10);
+        rightContainer.setSpacing(10);
+        rightContainer.setAlignment(Pos.CENTER_RIGHT);
+        rightContainer.setFillHeight(true);
+        //rightContainer.setPadding(new Insets(2, 5, 2, 5));
+        this.setRight(rightContainer);
+        rightContainerProperty = new SimpleObjectProperty<>(rightContainer);
 
-        setMinHeight(32);
-        setPrefHeight(32);
-        setMaxHeight(32);
+//        setMinHeight(32);
+//        setPrefHeight(32);
+//        setMaxHeight(32);
     }
 
 }

@@ -15,6 +15,6 @@
         -->
         <netbeans.hint.license>mit</netbeans.hint.license>
         <netbeans.compile.on.save>none</netbeans.compile.on.save>
-        <netbeans.hint.jdkPlatform>JDK_13.0.2</netbeans.hint.jdkPlatform>
+        <netbeans.hint.jdkPlatform>JDK_12.0.2</netbeans.hint.jdkPlatform>
     </properties>
 </project-shared-configuration>
