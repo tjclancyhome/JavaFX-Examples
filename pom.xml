@@ -9,7 +9,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <version.java>13</version.java>
+        <version.java>14</version.java>
         <maven.compiler.source>${version.java}</maven.compiler.source>
         <maven.compiler.target>${version.java}</maven.compiler.target>
         <version.javafx.maven.plugin>0.0.4</version.javafx.maven.plugin>
@@ -18,7 +18,7 @@
         dependencies. Not sure if I'll stick with it, but it does help when looking for version
         properties.
         -->
-        <version.openjfx>13</version.openjfx>
+        <version.openjfx>14</version.openjfx>
         <version.jackson.core>[2.9.10.4,)</version.jackson.core>
         <version.terminalfx>1.1.0</version.terminalfx>
         <version.junit.jupiter>5.5.2</version.junit.jupiter>
@@ -28,12 +28,15 @@
         <version.common.utils>1.0.0-jre11-SNAPSHOT</version.common.utils>
         <version.commons-lang3>3.9</version.commons-lang3>
         <version.testfx>4.0.16-alpha</version.testfx>
-        <version.assertj>3.15.0</version.assertj>
+        <version.assertj>3.16.1</version.assertj>
         <version.hamcrest>2.2</version.hamcrest>
         <version.weld.se>3.1.2.Final</version.weld.se>
         <version.ikonli-javafx>11.3.4</version.ikonli-javafx>
-        <version.pty4j>0.9.6</version.pty4j>
+        <version.pty4j>0.9.4</version.pty4j>
         <jlink.verbose>true</jlink.verbose>
+        <version.jfxtras>10.0-r1</version.jfxtras>
+        <version.typesafe.config>1.4.0</version.typesafe.config>
+        <version.mockito>3.5.10</version.mockito>
     </properties>
     <modules>
         <module>JFXComponents</module>
@@ -108,17 +111,15 @@
                 <artifactId>logback-classic</artifactId>
                 <version>${version.logback.classic}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.kodedu.terminalfx</groupId>
                 <artifactId>terminalfx</artifactId>
                 <version>${version.terminalfx}</version>
             </dependency>
-
             <dependency>
                 <groupId>org.jetbrains.pty4j</groupId>
                 <artifactId>pty4j</artifactId>
-                <version>0.9.4</version>
+                <version>${version.pty4j}</version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
@@ -158,12 +159,12 @@
             <dependency>
                 <groupId>org.jfxtras</groupId>
                 <artifactId>jfxtras-all</artifactId>
-                <version>10.0-r1</version>
+                <version>${version.jfxtras}</version>
             </dependency>
             <dependency>
                 <groupId>com.typesafe</groupId>
                 <artifactId>config</artifactId>
-                <version>1.4.0</version>
+                <version>${version.typesafe.config}</version>
             </dependency>
             <!-- Test Dependencies -->
             <dependency>
@@ -293,6 +294,12 @@
             <artifactId>hamcrest</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${version.mockito}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -301,7 +308,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <release>${version.java}</release>
+                    <release>${maven.compiler.target}</release>
                     <!--<compilerArgs>-->
                     <!--<arg>-verbose</arg>-->
                     <!--<arg>-Xlint:all,-options,-path</arg>-->
@@ -351,7 +358,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.1.1</version>
+                <version>3.2.0</version>
                 <configuration>
                     <useStandardDocletOptions>true</useStandardDocletOptions>
                 </configuration>
@@ -368,7 +375,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
-                <version>3.8.2</version>
+                <version>3.9.1</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -377,8 +384,11 @@
             </plugin>
         </plugins>
     </build>
-    <!--
     <repositories>
+        <repository>
+            <id>terminalfx-repo</id>
+            <url>https://github.com/javaterminal/terminalfx/raw/master/releases</url>
+        </repository>
         <repository>
             <id>bintray-jetbrains-pty4j</id>
             <name>bintray</name>
@@ -388,17 +398,5 @@
             <id>pty4j-releases</id>
             <url>https://github.com/javaterminal/pty4j/raw/master/releases</url>
         </repository>
-        <repository>
-            <id>sonatype-nexus-snapshots</id>
-            <name>Sonatype Nexus Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
     </repositories>
-    -->
 </project>

@@ -14,7 +14,7 @@
 <?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="mainWindow" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tjc.jfx.jfxgraphviz.JFXGraphvizSceneController">
+<VBox fx:id="mainWindow" onDragDetected="#onDragDetected" onMouseClicked="#onMouseClicked" onMouseDragged="#onMouseDragged" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tjc.jfx.jfxgraphviz.JFXGraphvizSceneController">
     <children>
         <MenuBar fx:id="menuBar" VBox.vgrow="NEVER">
             <menus>
@@ -22,7 +22,7 @@
                     <items>
                         <MenuItem mnemonicParsing="false" text="New" />
                         <MenuItem fx:id="fileOpenMenuItem" mnemonicParsing="false" onAction="#openFileAction" text="Open…" />
-                        <Menu mnemonicParsing="false" text="Open Recent" />
+                        <Menu fx:id="fileOpenRecent" mnemonicParsing="false" text="Open Recent" />
                         <SeparatorMenuItem mnemonicParsing="false" />
                         <MenuItem mnemonicParsing="false" text="Close" />
                         <MenuItem mnemonicParsing="false" text="Save" />
@@ -105,9 +105,9 @@
                         <TreeView fx:id="graphStoreTreeView" />
                     </content>
                 </ScrollPane>
-                <ScrollPane fx:id="imageScrollPane" prefHeight="200.0" prefWidth="200.0">
+                <ScrollPane fx:id="imageScrollPane" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0">
                     <content>
-                        <ImageView fx:id="imageView" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imageView" cache="true" pickOnBounds="true" preserveRatio="true" />
                     </content>
                 </ScrollPane>
             </items>

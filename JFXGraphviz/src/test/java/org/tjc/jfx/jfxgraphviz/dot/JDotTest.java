@@ -36,10 +36,7 @@ import static org.tjc.common.unittest.UnitTestSupport.writeln;
  *
  * @author tjclancy
  */
-public class DotTest extends BaseUnitTest {
-
-    public DotTest() {
-    }
+public class JDotTest extends BaseUnitTest {
 
     @BeforeEach
     public void setup() {
@@ -54,73 +51,118 @@ public class DotTest extends BaseUnitTest {
     }
 
     /**
-     * Test of addOutputFormat method, of class Dot.
+     * Test of getInputFileName method, of class JDot.
      */
     @Test
-    public void testAddOutputFormat() {
+    public void testGetInputFileName() {
         writeBanner(methodName());
 
-        Dot dot = new Dot();
-        dot.addOutputFormat(OutputFormats.PNG);
-        dot.addOutputFormat(OutputFormats.JPG);
-        dot.getOutputFormatsArguments().forEach(arg -> writeln("{0}", arg));
+        JDot jdot = new JDot();
+        writeln("jdot: {0}", jdot);
     }
 
     /**
-     * Test of debugDumpOutputFormatsEnum method, of class Dot.
+     * Test of setInputFileName method, of class JDot.
      */
     @Test
-    public void testDumpOutputFormats() {
+    public void testSetInputFileName() {
         writeBanner(methodName());
-
-        Dot dot = new Dot();
-        dot.debugDumpOutputFormatsEnum();
     }
 
     /**
-     * Test of debugDumpGraphAttributesEnum method, of class Dot.
+     * Test of getGraphAttributes method, of class JDot.
      */
     @Test
-    public void testDumpGraphAttributes() {
+    public void testGetGraphAttributes() {
         writeBanner(methodName());
-
-        Dot dot = new Dot();
-        dot.debugDumpGraphAttributesEnum();
     }
 
     /**
-     * Test of addGraphAttribute method, of class Dot.
+     * Test of getDefaultNodeAttributes method, of class JDot.
      */
     @Test
-    public void testAddGraphAttribute() {
+    public void testGetDefaultNodeAttributes() {
+        writeBanner(methodName());
     }
 
     /**
-     * Test of getGraphAttributeArguments method, of class Dot.
+     * Test of getDefaultEdgeAttributes method, of class JDot.
      */
     @Test
-    public void testGetGraphAttributeArguments() {
+    public void testGetDefaultEdgeAttributes() {
+        writeBanner(methodName());
     }
 
     /**
-     * Test of debugDumpOutputFormatsEnum method, of class Dot.
+     * Test of getLayoutEngine method, of class JDot.
      */
     @Test
-    public void testDebugDumpOutputFormatsEnum() {
+    public void testGetLayoutEngine() {
+        writeBanner(methodName());
     }
 
     /**
-     * Test of debugDumpGraphAttributesEnum method, of class Dot.
+     * Test of getOutputFormats method, of class JDot.
      */
     @Test
-    public void testDebugDumpGraphAttributesEnum() {
+    public void testGetOutputFormats() {
+        writeBanner(methodName());
     }
 
     /**
-     * Test of getOutputFormatsArguments method, of class Dot.
+     * Test of getOutputFileName method, of class JDot.
      */
     @Test
-    public void testGetOutputFormatsArguments() {
+    public void testGetOutputFileName() {
+        writeBanner(methodName());
+    }
+
+    /**
+     * Test of isAutogenOutputFileName method, of class JDot.
+     */
+    @Test
+    public void testIsAutogenOutputFileName() {
+        writeBanner(methodName());
+    }
+
+    /**
+     * Test of isSuppressWarningMessages method, of class JDot.
+     */
+    @Test
+    public void testIsSuppressWarningMessages() {
+        writeBanner(methodName());
+    }
+
+    /**
+     * Test of isVerboseMode method, of class JDot.
+     */
+    @Test
+    public void testIsVerboseMode() {
+        writeBanner(methodName());
+    }
+
+    /**
+     * Test of toString method, of class JDot.
+     */
+    @Test
+    public void testToString() {
+        writeBanner(methodName());
+    }
+
+    /**
+     * Test of builder method, of class JDot.
+     */
+    @Test
+    public void testBuilder() {
+        writeBanner(methodName());
+    }
+
+    /**
+     * Test of buildCommandLineArgs method, of class JDot.
+     */
+    @Test
+    public void testBuildCommandLineArgs() {
+        writeBanner(methodName());
     }
 
 }

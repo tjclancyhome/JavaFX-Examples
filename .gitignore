@@ -55,33 +55,54 @@ target/
 
 # Misc folders and files #
 ##########################
-/out
-/build
-/dist
 out/
 build/
 dist/
 tmp/
-cloc*
-*.swp
+nbproject/
+JFXGraphviz/src/test/resources/samples/*.png
+JFXGraphviz/src/test/resources/samples/*.jpg
+JFXGraphviz/src/test/resources/samples/*.jpeg
 .resourceCache/
 .sts4-cache/
-jshell.history
 .archetypes/
-/AceEditorExample/nbproject/
-/JFXFontExamples/nbproject/
-/JFXHexViewer/nbproject/
-/JFXHexEditor/nbproject/
-/JFXGameOfLife/nbproject/
-/JFXTurtles/nbproject/
+cloc*
+*.swp
+jshell.history
 _config.yml
 .java-version
-/JFXBouncingBalls/nbproject/
-/TurtlesApp/nbproject/
-/ExamplesGenerator/nbproject/
-/JFXGraphviz/nbproject/
-/JFXComponents/nbproject/
 *bak
-/JFXGraphviz/src/test/resources/samples/*.png
-/JFXGraphviz/src/test/resources/samples/*.jpg
-/JFXGraphviz/src/test/resources/samples/*.jpeg
+
+#==========================================================================#
+# Not sure why I was doint these individually rather than excluding all but
+# I decided to exclude all nbproject/ sub-directories.
+#==========================================================================#
+#/JFXBouncingBalls/nbproject/
+#/TurtlesApp/nbproject/
+#/ExamplesGenerator/nbproject/
+#/JFXGraphviz/nbproject/
+#/JFXComponents/nbproject/
+#/AceEditorExample/nbproject/
+#/JFXFontExamples/nbproject/
+#/JFXHexViewer/nbproject/
+#/JFXHexEditor/nbproject/
+#/JFXGameOfLife/nbproject/
+#/JFXTurtles/nbproject/
+
+
+
+
+###########################################
+# This is too broad. Some image files
+# might be required to be committed as
+# part of test data. Do this on individual
+# projects that generate image files for
+# testing.
+###########################################
+###############
+# Image files #
+###############
+#*.png
+#*.jpg
+#*.jpeg
+

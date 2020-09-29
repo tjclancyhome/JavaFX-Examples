@@ -42,4 +42,5 @@ module org.tjc.jfx.jfxgraphviz {
 
     opens org.tjc.jfx.jfxgraphviz to javafx.fxml;
     exports org.tjc.jfx.jfxgraphviz;
+    exports org.tjc.jfx.jfxgraphviz.dot;
 }

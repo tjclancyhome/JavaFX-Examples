@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2019 tjclancy.
+ * Copyright 2020 tjclancy.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,17 +21,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.tjc.jfx.jfxgraphviz;
+package org.tjc.jfx.jfxgraphviz.config;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.tjc.common.unittest.BaseUnitTest;
-import org.tjc.jfx.jfxgraphviz.config.Configure;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.*;
 import static org.tjc.common.unittest.UnitTestSupport.methodName;
 import static org.tjc.common.unittest.UnitTestSupport.writeBanner;
 import static org.tjc.common.unittest.UnitTestSupport.writeln;
@@ -40,7 +38,7 @@ import static org.tjc.common.unittest.UnitTestSupport.writeln;
  *
  * @author tjclancy
  */
-public class ConfigTest extends BaseUnitTest {
+public class ConfigureTest extends BaseUnitTest {
 
     @BeforeEach
     public void setup() {
@@ -52,6 +50,14 @@ public class ConfigTest extends BaseUnitTest {
     public void tearDown() {
         writeln();
         this.restoreShowOutput();
+    }
+
+    /**
+     * Test of getInstance method, of class Configure.
+     */
+    @Test
+    public void testGetInstance() {
+        writeBanner(methodName());
     }
 
     /**
@@ -71,17 +77,56 @@ public class ConfigTest extends BaseUnitTest {
     }
 
     /**
-     * Test of getUserHomePath method, of class Configure.
+     * Test of getPathToOutputDir method, of class Configure.
      *
      * @throws java.lang.Exception
      */
     @Test
-    public void testGetPathToUserHome() throws Exception {
+    public void testGetPathToOutputDir() throws Exception {
         writeBanner(methodName());
-        Configure config = Configure.getInstance();
-        Path path = config.getPathToUserHome();
-        assertTrue(Files.exists(path));
-        writeln("path: {0} exists.", path);
+    }
+
+    /**
+     * Test of getPathToNeato method, of class Configure.
+     */
+    @Test
+    public void testGetPathToNeato() {
+        writeBanner(methodName());
+    }
+
+    /**
+     * Test of getPathToGraphvizRoot method, of class Configure.
+     */
+    @Test
+    public void testGetPathToGraphvizRoot() {
+        writeBanner(methodName());
+    }
+
+    /**
+     * Test of getPathToDot method, of class Configure.
+     */
+    @Test
+    public void testGetPathToDot() {
+        writeBanner(methodName());
+    }
+
+    /**
+     * Test of getPathToUserHome method, of class Configure.
+     */
+    @Test
+    public void testGetPathToUserHome() {
+        writeBanner(methodName());
+        //mock creation
+        List mockedList = mock(List.class);
+
+        //using mock object
+        mockedList.add("one");
+        mockedList.clear();
+
+        //verification
+        verify(mockedList).add("one");
+        verify(mockedList).clear();
+
     }
 
 }

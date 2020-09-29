@@ -94,9 +94,16 @@ public class Configure {
      * getPathToOutputDir.</p>
      *
      * @return a {@link java.nio.file.Path} object.
+     *
+     * @throws java.io.IOException
      */
-    public Path getPathToOutputDir() {
-        return Path.of(getProperty("path.to.output.dir", SystemProps.userHome() + "/.tmp"));
+    public Path getPathToOutputDir() throws IOException {
+        Path outputPath = Path.of(
+            getProperty("path.to.output.dir", SystemProps.userHome() + "/.tmp"));
+        if (!Files.exists(outputPath)) {
+            Files.createDirectories(outputPath);
+        }
+        return outputPath;
     }
 
     /**
@@ -171,8 +178,8 @@ public class Configure {
                 Files.createDirectories(outputDir);
             } catch (IOException ex) {
                 log.error("### Caught exception creating output directories: {}, message: {}",
-                        outputDir.toString(),
-                        ex.getMessage());
+                    outputDir.toString(),
+                    ex.getMessage());
                 throw ex;
             }
         }

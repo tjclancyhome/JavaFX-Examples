@@ -249,8 +249,7 @@ public class JFXSimpleGraph extends JFXFxmlExamplesApplication {
         log.debug("###     triangle.getBoundsInParent().getCenterX(): {}", triangle
             .getBoundsInParent().getCenterX());
         log.debug("###     triangle.getBoundsInParent().getCenterY(): {}", triangle
-            .getBoundsInParent()
-            .getCenterY());
+            .getBoundsInParent().getCenterY());
         log.debug("###     relocating to: x: {}, y:{}", x, y);
         triangle.relocate(x, y);
         log.debug("###     triangle.getBoundsInParent().getCenterX(): {}", triangle
@@ -392,7 +391,7 @@ public class JFXSimpleGraph extends JFXFxmlExamplesApplication {
         var dragContext = new DragContext();
         var wrapGroup = new Group(node);
 
-        wrapGroup.addEventFilter(MouseEvent.ANY, (final                                                                                                                                     var mouseEvent) -> {
+        wrapGroup.addEventFilter(MouseEvent.ANY, (final                                                                                                                                       var mouseEvent) -> {
             if (dragModeActiveProperty.get()) {
                 mouseEvent.consume();
             }
@@ -429,7 +428,7 @@ public class JFXSimpleGraph extends JFXFxmlExamplesApplication {
             }
         });
 
-        wrapGroup.addEventFilter(MouseEvent.MOUSE_RELEASED, (final     var mouseEvent) -> {
+        wrapGroup.addEventFilter(MouseEvent.MOUSE_RELEASED, (final       var mouseEvent) -> {
             log.debug("### entered wrapGroup eventFilter MOUSE_RELEASED: event: {}", mouseEvent);
             if (dragModeActiveProperty.get()) {
                 wrapGroup.setOpacity(1.0);

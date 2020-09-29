@@ -24,18 +24,20 @@
 package org.tjc.jfx.jfxgraphviz;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-
-import static java.util.Arrays.asList;
-
 import java.util.List;
+import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tjc.jfx.jfxgraphviz.config.Configure;
+
+import static java.util.Arrays.asList;
 
 /**
  * <p>
@@ -81,9 +83,11 @@ public class GraphvizProcessor {
      *
      * @return a boolean.
      *
-     * @throws org.tjc.jfx.jfxgraphviz.GraphvizProcessorException
+     * @throws org.tjc.jfx.jfxgraphviz.GraphvizProcessorException Throws exception if creating the
+     *                                                            process builder or executing the
+     *                                                            process throws this exception.
      */
-    public boolean neato(String... args) throws GraphvizProcessorException {
+    public boolean neato(String... args) throws GraphvizProcessorException, IOException {
         log.debug("### entered dot(String[]): {}", asList(args));
 
         List<String> commandAndArgs = new ArrayList<>();
@@ -113,7 +117,9 @@ public class GraphvizProcessor {
         commandAndArgs.add(config.getProperty(PATH_TO_DOT_KEY));
         commandAndArgs.addAll(asList(args));
 
-        execute(commandAndArgs);
+        var processOutput = execute(commandAndArgs);
+        processOutput.forEach(line -> log.debug("###     {}", line));
+
         return true;
     }
 
@@ -126,23 +132,29 @@ public class GraphvizProcessor {
      * @return a {@link java.util.List} object.
      *
      * @throws org.tjc.jfx.jfxgraphviz.GraphvizProcessorException if any.
+     * @throws java.io.IOException
      */
-    public List<String> execute(List<String> commandAndArgs) throws GraphvizProcessorException {
-        log.debug("### execute: {}", commandAndArgs);
+    public List<String> execute(List<String> commandAndArgs) throws GraphvizProcessorException, IOException {
+        log.debug("### entered execute: {}", commandAndArgs);
+
+        List<String> results = null;
 
         //var outputDir = config.getProperty("path.to.output.dir");
-        Path outputDirPath = config.getPathToOutputDir();
+        Path outputPath = config.getPathToOutputDir();
 
-        log.debug("### outputDir: {}", outputDirPath.toString());
-        log.debug("### outputDir: {}", outputDirPath.toAbsolutePath().toString());
+        log.debug("###     outputPath: {}", outputPath.toString());
 
-        var processBuilder = new ProcessBuilder(commandAndArgs);
+        File tempFile = Files.createTempFile(outputPath, "process", ".log").toFile();
+        log.debug("###     tempFile: {}", tempFile);
+        var pb = new ProcessBuilder(commandAndArgs);
+        pb.redirectErrorStream(true);
 
-        debugView(processBuilder);
+        debugView(pb);
 
         Process process;
         try {
-            process = processBuilder.start();
+            process = pb.start();
+            results = readOutputLines(process.getInputStream());
         } catch (IOException ex) {
             throw new GraphvizProcessorException(ex);
         }
@@ -150,6 +162,39 @@ public class GraphvizProcessor {
         int exitCode;
         try {
             exitCode = process.waitFor();
+
+            log.debug("###     exitCode: {}", exitCode);
+            results.forEach(line -> log.debug("{}", line));
+//            InputStream errorStream = process.getErrorStream();
+//            InputStream inputStream = process.getInputStream();
+//            OutputStream outputStream = process.getOutputStream();
+
+//            results = new ArrayList<>(readOutput(process.getInputStream()));
+//            results = Files.lines(tempFile.toPath())
+//                .collect(Collectors.toList());
+
+//            log.debug("###     results: {}", results);
+//            log.debug("###     errStream   : {}", errorStream);
+//            log.debug("###     inputStream : {}", inputStream);
+//            log.debug("###     outputStream: {}", outputStream);
+//            try {
+//                String allBytes = new String(inputStream.readAllBytes());
+//                log.debug("###     allBytes: {}", allBytes);
+//            } catch (IOException ex) {
+//                throw new GraphvizProcessorException(ex);
+//            }
+//            if (log.isDebugEnabled()) {
+//                BufferedReader br = new BufferedReader(new InputStreamReader(process
+//                    .getErrorStream()));
+//                String line;
+//                try {
+//                    line = br.readLine();
+//                    log.debug("###     line: {}", line);
+//                } catch (IOException ex) {
+//                    log.error("Caught exeption: {}", ex);
+//                    throw new GraphvizProcessorException(ex);
+//                }
+//            }
         } catch (InterruptedException ex) {
             throw new GraphvizProcessorException(ex);
         }
@@ -157,12 +202,21 @@ public class GraphvizProcessor {
         if (exitCode != 0) {
             var errorResultStr = readOutputAsString(process.getErrorStream());
             throw new GraphvizProcessorException(String.format(
-                    "Exit code: %s, Exception message: %s", exitCode, errorResultStr));
+                "Exit code: %s, Exception message: %s", exitCode, errorResultStr));
         }
-
-        List<String> results = readOutput(process.getInputStream());
-
+        log.debug("###     results: {}", results);
+        log.debug("### exiting execute()");
         return results;
+    }
+
+    private List<String> readOutputLines(InputStream inputStream) throws IOException {
+        log.debug("###     inputStream: {}", inputStream);
+        try(BufferedReader output = new BufferedReader(new InputStreamReader(inputStream))) {
+            List<String> lines = output.lines()
+                .collect(Collectors.toList());
+            lines.forEach(line -> System.out.printf("line: %s%n", line));
+            return lines;
+        }
     }
 
     /**
@@ -209,11 +263,11 @@ public class GraphvizProcessor {
     private void debugView(ProcessBuilder pb) {
         if (log.isDebugEnabled()) {
             log.debug("-------------------------------------");
-            log.debug("### pb command()         : {}", pb.command());
-            log.debug("### pb directory()       : {}", pb.directory());
-            log.debug("### pb environment() size: {}", pb.environment().size());
+            log.debug("###     pb command()         : {}", pb.command());
+            log.debug("###     pb directory()       : {}", pb.directory());
+            log.debug("###     pb environment() size: {}", pb.environment().size());
             if (log.isTraceEnabled()) {
-                log.debug("### pb environment()     :");
+                log.debug("###     pb environment()     :");
                 pb.environment().forEach((k, v) -> log.debug("{}: {}", k, v));
             }
             log.debug("-------------------------------------");

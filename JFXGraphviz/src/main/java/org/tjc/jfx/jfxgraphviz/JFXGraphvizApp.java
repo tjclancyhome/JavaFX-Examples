@@ -7,7 +7,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.SceneAntialiasing;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,22 +37,19 @@ public class JFXGraphvizApp extends JFXFxmlExamplesApplication {
         controller = fxmlLoader.getController();
         controller.setCommandLineFilePath(getPathOfFileNameParam());
 
-        scene = new Scene(parent, 1024, 768, true, SceneAntialiasing.DISABLED);
+        scene = new Scene(parent, 1024, 768);
 
         URL stylesheet = getClass().getResource("styles.css");
         log.debug("### stylesheet: {}", stylesheet);
         if (stylesheet != null) {
             boolean added = scene.getStylesheets().add(stylesheet.toExternalForm());
             log.debug("### Stylesheet: styles.css added: {}", added);
-
         }
 
         controller.setScene(scene);
         primaryStage.setScene(scene);
         primaryStage.show();
 
-//        JFXGraphvizAppStage stageService = new JFXGraphvizAppStage();
-//        stageService.init(primaryStage);
         log.debug("### exited init(Stage)");
     }
 

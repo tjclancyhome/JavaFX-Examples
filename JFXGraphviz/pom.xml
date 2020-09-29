@@ -15,12 +15,24 @@
         <compression.level>2</compression.level>
         <jlink.verbose>true</jlink.verbose>
         <mainClass>org.tjc.jfx.jfxgraphviz.JFXGraphvizApp</mainClass>
+        <version.jfree.svg>4.1</version.jfree.svg>
+        <version.jmh>1.25.1</version.jmh>
     </properties>
     <dependencies>
         <dependency>
             <groupId>org.jfree</groupId>
             <artifactId>org.jfree.svg</artifactId>
-            <version>4.1</version>
+            <version>${version.jfree.svg}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>1.25.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>${version.jmh}</version>
         </dependency>
     </dependencies>
 </project>

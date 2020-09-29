@@ -23,11 +23,20 @@
  */
 package org.tjc.jfx.jfxgraphviz;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.lang.ProcessHandle.Info;
-import static java.util.Arrays.asList;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.assertj.core.util.Arrays;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.tjc.common.unittest.BaseUnitTest;
+
+import static java.util.Arrays.asList;
 import static org.tjc.common.unittest.UnitTestSupport.methodName;
 import static org.tjc.common.unittest.UnitTestSupport.writeBanner;
 import static org.tjc.common.unittest.UnitTestSupport.writeln;
@@ -36,7 +45,44 @@ import static org.tjc.common.unittest.UnitTestSupport.writeln;
  *
  * @author tjclancy
  */
-public class ProcessTest {
+public class ProcessTest extends BaseUnitTest {
+
+    @BeforeEach
+    public void setup() {
+        this.forceShowOutput();
+
+    }
+
+    @AfterEach
+    public void tearDown() {
+        writeln();
+        this.restoreShowOutput();
+    }
+
+    @Test
+    public void testProcessBuilder() throws IOException, InterruptedException {
+        writeBanner(methodName());
+//        ProcessBuilder pb = new ProcessBuilder("java", "-version");
+//        ProcessBuilder pb = new ProcessBuilder("/bin/bash", "-c", "ls -lathr");
+        ProcessBuilder pb = new ProcessBuilder("/usr/local/bin/dot", "-v", "-Tpng", "-O",
+            "/Users/tjclancy/Projects/graphviz_projects/backup/digraph2.dot");
+        pb.redirectErrorStream(true);
+        Process process = pb.start();
+        List<String> results = readOutput(process.getInputStream());
+        int exitCode = process.waitFor();
+
+        writeln("exit code: {0}", exitCode);
+        if (!results.isEmpty()) {
+            results.forEach(line -> writeln("{0}", line));
+        }
+    }
+
+    private List<String> readOutput(InputStream inputStream) throws IOException {
+        try(BufferedReader output = new BufferedReader(new InputStreamReader(inputStream))) {
+            return output.lines()
+                .collect(Collectors.toList());
+        }
+    }
 
     @Test
     public void testProcessHandle_Pid() {

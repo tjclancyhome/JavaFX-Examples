@@ -6,7 +6,7 @@
         <groupId>org.tjc.jfx</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>JFXCanvasExampleApp</artifactId>
+    <artifactId>JFXCanvasExample</artifactId>
     <packaging>jar</packaging>
     <properties>
         <jlink.launcher>JFXCanvasExampleApp</jlink.launcher>
@@ -15,5 +15,7 @@
         <compression.level>2</compression.level>
         <jlink.verbose>true</jlink.verbose>
         <mainClass>org.tjc.jfx.jfxcanvasexample.JFXCanvasExampleApp</mainClass>
+        <maven.compiler.source>14</maven.compiler.source>
+        <maven.compiler.target>14</maven.compiler.target>
     </properties>
 </project>

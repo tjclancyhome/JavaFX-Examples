@@ -19,5 +19,9 @@
         <version.pdfbox>2.0.17</version.pdfbox>
         <version.tika>1.23</version.tika>
         -->
+        <!--
+        <maven.compiler.source>14</maven.compiler.source>
+        <maven.compiler.target>14</maven.compiler.target>
+        -->
     </properties>
 </project>

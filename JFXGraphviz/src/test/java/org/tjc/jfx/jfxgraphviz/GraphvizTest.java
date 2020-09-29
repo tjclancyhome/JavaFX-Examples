@@ -31,6 +31,7 @@ import java.lang.ProcessBuilder.Redirect;
 import java.nio.file.Path;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
+
 import static org.tjc.common.unittest.UnitTestSupport.methodName;
 import static org.tjc.common.unittest.UnitTestSupport.writeBanner;
 
@@ -97,9 +98,9 @@ public class GraphvizTest {
     @Test
     public void testRuntimeExec() throws IOException, InterruptedException {
         writeBanner(methodName());
-        System.out.println("executing: '/Users/tjclancy/bin/echo-path.sh'");
+        System.out.println("executing: '/Users/tjclancy/bin/echo-path'");
         System.out.println("=============================================");
-        execute("/Users/tjclancy/bin/echo-path.sh");
+        execute("/Users/tjclancy/bin/echo-path");
         System.out.println();
         System.out.println("executing: '/usr/local/bin/dot -?'");
         System.out.println("==================================");

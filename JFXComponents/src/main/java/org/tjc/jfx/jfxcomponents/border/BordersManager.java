@@ -38,7 +38,7 @@ public class BordersManager {
 
     private final Borders borders;
 
-    private BordersManager() {
+    public BordersManager() {
         borders = new Borders();
     }
 
